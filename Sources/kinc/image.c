@@ -61,9 +61,11 @@ static void *buffer_realloc(void *p, size_t size) {
 
 static void buffer_free(void *p) {}
 
+#ifndef KINC_IMAGE_STANDARD_MALLOC
 #define STBI_MALLOC(sz) buffer_malloc(sz)
 #define STBI_REALLOC(p, newsz) buffer_realloc(p, newsz)
 #define STBI_FREE(p) buffer_free(p)
+#endif
 
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_STATIC
